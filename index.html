@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        New york Times
+    </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div style="text-align:center;"><h1>The New York Times</h1></div><br>
+    <div class="container-sm container-md container-lg container-xl">
+        <div class="row">
+          <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3" id="main">
+            <h1>Arts</h1>
+          </div>
+          <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3" id="main1">
+            <h1>Home</h1>
+          </div>
+          <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3" id="main2">
+               <h1> World</h1>
+          </div>
+          <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3" id="main3">
+            <h1>Science</h1>
+       </div>
+        </div>
+      </div>
+   
+</body>
+<script>
+    async function artsample() {
+       //let row = document.createElement("div");
+        var data = await fetch("https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=fF9h2PGnYjv9AKEVjlDvAbdkLeneQsjA");
+        //console.log(data);
+        var jsondata = await data.json();
+        console.log(jsondata);
+        for(var i=0;i<1;i++)
+    {
+        let html = `
+        <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters"> </div>
+                <div style="width:300px;">
+                           <img src="${jsondata.results[i].multimedia[0].url}" class="card-img">
+                                </div>
+                <div class="col-md-12">
+                <div class="card-body">
+                <p  style="color:blue">${jsondata.results[i].section}-${jsondata.results[i].item_type}</p>
+                <h5 class="card-title">${jsondata.results[i].title}</h5>
+                     <p class="card-text">${jsondata.results[i].byline}-${jsondata.results[i].created_date}</p>
+                   <p class="card-text"><small class="text-muted">${jsondata.results[i].abstract}</small></p>
+                   <a href="${jsondata.results[i].short_url}">continue reading...</a><br><br>
+                   <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo" onclick="art()"> Click for more Art news</button>
+                  </div>
+                      </div>
+                           </div>
+                             </div> `;
+                             let div = document.createElement("div");
+                           // div.className = "col-lg-3 ";
+                             div.innerHTML = html;
+                            //row.appendChild(div);
+                            document.getElementById("main").appendChild(div);
+    }
+    }
+    async function art() {
+       //let row = document.createElement("div");
+        var data = await fetch("https://api.nytimes.com/svc/topstories/v2/arts.json?api-key=fF9h2PGnYjv9AKEVjlDvAbdkLeneQsjA");
+        //console.log(data);
+        var jsondata = await data.json();
+        console.log(jsondata);
+        for(var i=1;i<jsondata.results.length;i++)
+    {
+        let html = `
+        <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters"> </div>
+                <div style="width:300px;">
+                           <img src="${jsondata.results[i].multimedia[0].url}" class="card-img">
+                                </div>
+                <div class="col-md-12">
+                <div class="card-body">
+                <p  style="color:blue">${jsondata.results[i].section}-${jsondata.results[i].item_type}</p>
+                <h5 class="card-title">${jsondata.results[i].title}</h5>
+                     <p class="card-text">${jsondata.results[i].byline}-${jsondata.results[i].created_date}</p>
+                   <p class="card-text"><small class="text-muted">${jsondata.results[i].abstract}</small></p>
+                   <a href="${jsondata.results[i].short_url}">continue reading...</a>
+                  </div>
+                      </div>
+                           </div>
+                             </div> `;
+                             let div = document.createElement("div");
+                           // div.className = "col-lg-3 ";
+                             div.innerHTML = html;
+                            //row.appendChild(div);
+                            document.getElementById("main").appendChild(div);
+    }
+    }
+    async function homesample() {
+       //let row = document.createElement("div");
+        var data = await fetch("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=fF9h2PGnYjv9AKEVjlDvAbdkLeneQsjA");
+        //console.log(data);
+        var jsondata = await data.json();
+        console.log(jsondata);
+        for(var i=0;i<1;i++)
+    {
+        let html = `
+        <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters"> </div>
+                <div style="width:300px;">
+                           <img src="${jsondata.results[i].multimedia[0].url}" class="card-img">
+                                </div>
+                <div class="col-md-12">
+                <div class="card-body">
+                <p  style="color:blue">${jsondata.results[i].section}-${jsondata.results[i].item_type}</p>
+                <h5 class="card-title">${jsondata.results[i].title}</h5>
+                     <p class="card-text">${jsondata.results[i].byline}-${jsondata.results[i].created_date}</p>
+                   <p class="card-text"><small class="text-muted">${jsondata.results[i].abstract}</small></p>
+                   <a href="${jsondata.results[i].short_url}">continue reading...</a><br><br>
+                   <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo" onclick="home()">Click for more Home news</button>
+                  </div>
+                      </div>
+                           </div>
+                             </div> `;
+                             let div = document.createElement("div");
+                           // div.className = "col-lg-3 ";
+                             div.innerHTML = html;
+                            //row.appendChild(div);
+                            document.getElementById("main1").appendChild(div);
+    }
+    }
+    async function home() {
+       //let row = document.createElement("div");
+        var data = await fetch("https://api.nytimes.com/svc/topstories/v2/home.json?api-key=fF9h2PGnYjv9AKEVjlDvAbdkLeneQsjA");
+        //console.log(data);
+        var jsondata = await data.json();
+        console.log(jsondata);
+        for(var i=1;i<jsondata.results.length;i++)
+    {
+        let html = `
+        <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters"> </div>
+                <div style="width:300px;">
+                           <img src="${jsondata.results[i].multimedia[0].url}" class="card-img">
+                                </div>
+                <div class="col-md-12">
+                <div class="card-body">
+                <p  style="color:blue">${jsondata.results[i].section}-${jsondata.results[i].item_type}</p>
+                <h5 class="card-title">${jsondata.results[i].title}</h5>
+                     <p class="card-text">${jsondata.results[i].byline}-${jsondata.results[i].created_date}</p>
+                   <p class="card-text"><small class="text-muted">${jsondata.results[i].abstract}</small></p>
+                   <a href="${jsondata.results[i].short_url}">continue reading...</a>
+                  </div>
+                      </div>
+                           </div>
+                             </div> `;
+                             let div = document.createElement("div");
+                           // div.className = "col-lg-3 ";
+                             div.innerHTML = html;
+                            //row.appendChild(div);
+                            document.getElementById("main1").appendChild(div);
+    }
+    }
+    async function worldsample() {
+       //let row = document.createElement("div");
+        var data = await fetch("https://api.nytimes.com/svc/topstories/v2/world.json?api-key=fF9h2PGnYjv9AKEVjlDvAbdkLeneQsjA");
+        //console.log(data);
+        var jsondata = await data.json();
+        console.log(jsondata);
+        for(var i=0;i<1;i++)
+    {
+        let html = `
+        <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters"> </div>
+                <div style="width:300px;">
+                           <img src="${jsondata.results[i].multimedia[0].url}" class="card-img">
+                                </div>
+                <div class="col-md-12">
+                <div class="card-body">
+                <p  style="color:blue">${jsondata.results[i].section}-${jsondata.results[i].item_type}</p>
+                <h5 class="card-title">${jsondata.results[i].title}</h5>
+                     <p class="card-text">${jsondata.results[i].byline}-${jsondata.results[i].created_date}</p>
+                   <p class="card-text"><small class="text-muted">${jsondata.results[i].abstract}</small></p>
+                   <a href="${jsondata.results[i].short_url}">continue reading...</a><br><br>
+                   <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo" onclick="world()">Click for more World news</button>
+                  </div>
+                      </div>
+                           </div>
+                             </div> `;
+                             let div = document.createElement("div");
+                           // div.className = "col-lg-3 ";
+                             div.innerHTML = html;
+                            //row.appendChild(div);
+                            document.getElementById("main2").appendChild(div);
+    }
+    }
+    async function world() {
+       //let row = document.createElement("div");
+        var data = await fetch("https://api.nytimes.com/svc/topstories/v2/world.json?api-key=fF9h2PGnYjv9AKEVjlDvAbdkLeneQsjA");
+        //console.log(data);
+        var jsondata = await data.json();
+        console.log(jsondata);
+        for(var i=1;i<jsondata.results.length;i++)
+    {
+        let html = `
+        <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters"> </div>
+                <div style="width:300px;">
+                           <img src="${jsondata.results[i].multimedia[0].url}" class="card-img">
+                                </div>
+                <div class="col-md-12">
+                <div class="card-body">
+                <p  style="color:blue">${jsondata.results[i].section}-${jsondata.results[i].item_type}</p>
+                <h5 class="card-title">${jsondata.results[i].title}</h5>
+                     <p class="card-text">${jsondata.results[i].byline}-${jsondata.results[i].created_date}</p>
+                   <p class="card-text"><small class="text-muted">${jsondata.results[i].abstract}</small></p>
+                   <a href="${jsondata.results[i].short_url}">continue reading...</a>
+                  </div>
+                      </div>
+                           </div>
+                             </div> `;
+                             let div = document.createElement("div");
+                           // div.className = "col-lg-3 ";
+                             div.innerHTML = html;
+                            //row.appendChild(div);
+                            document.getElementById("main2").appendChild(div);
+    }
+    }
+    async function sciencesample() {
+       //let row = document.createElement("div");
+        var data = await fetch("https://api.nytimes.com/svc/topstories/v2/science.json?api-key=fF9h2PGnYjv9AKEVjlDvAbdkLeneQsjA");
+        //console.log(data);
+        var jsondata = await data.json();
+        console.log(jsondata);
+        for(var i=0;i<1;i++)
+    {
+        let html = `
+        <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters"> </div>
+                <div style="width:300px;">
+                           <img src="${jsondata.results[i].multimedia[0].url}" class="card-img">
+                                </div>
+                <div class="col-md-12">
+                <div class="card-body">
+                <p  style="color:blue">${jsondata.results[i].section}-${jsondata.results[i].item_type}</p>
+                <h5 class="card-title">${jsondata.results[i].title}</h5>
+                     <p class="card-text">${jsondata.results[i].byline}-${jsondata.results[i].created_date}</p>
+                   <p class="card-text"><small class="text-muted">${jsondata.results[i].abstract}</small></p>
+                   <a href="${jsondata.results[i].short_url}">continue reading...</a><br><br>
+
+                   <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo" onclick="science()">Click for more Science news</button>
+            
+                  </div>
+                      </div>
+                           </div>
+                             </div> `;
+                             let div = document.createElement("div");
+                           // div.className = "col-lg-3 ";
+                             div.innerHTML = html;
+                            //row.appendChild(div);
+                            document.getElementById("main3").appendChild(div);
+    }
+    }
+    async function science() {
+       //let row = document.createElement("div");
+        var data = await fetch("https://api.nytimes.com/svc/topstories/v2/science.json?api-key=fF9h2PGnYjv9AKEVjlDvAbdkLeneQsjA");
+        //console.log(data);
+        var jsondata = await data.json();
+        console.log(jsondata);
+        for(var i=1;i<jsondata.results.length;i++)
+    {
+        let html = `
+        <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters"> </div>
+                <div style="width:300px;">
+                           <img src="${jsondata.results[i].multimedia[0].url}" class="card-img">
+                                </div>
+                <div class="col-md-12">
+                <div class="card-body">
+                <p  style="color:blue">${jsondata.results[i].section}-${jsondata.results[i].item_type}</p>
+                <h5 class="card-title">${jsondata.results[i].title}</h5>
+                     <p class="card-text">${jsondata.results[i].byline}-${jsondata.results[i].created_date}</p>
+                   <p class="card-text"><small class="text-muted">${jsondata.results[i].abstract}</small></p>
+                   <a href="${jsondata.results[i].short_url}">continue reading...</a>
+                  </div>
+                      </div>
+                           </div>
+                             </div> `;
+                             let div = document.createElement("div");
+                           // div.className = "col-lg-3 ";
+                             div.innerHTML = html;
+                            //row.appendChild(div);
+                            document.getElementById("main3").appendChild(div);
+    }
+    }
+  
+    artsample();
+    homesample();
+    worldsample();
+    sciencesample();
+   
+</script>
+</html>
